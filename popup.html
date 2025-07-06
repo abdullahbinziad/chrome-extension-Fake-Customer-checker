@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake Order Checker</title>
+    <link rel="stylesheet" href="popup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <a
+          href="https://fake-order-checker.flexsoftr.com/"
+          target="_blank"
+          class="logo-link"
+        >
+          <div class="logo">
+            <img
+              src="icons/icon48.png"
+              alt="Fake Order Checker"
+              class="logo-img"
+            />
+            <div class="logo-text">
+              <h1>ওয়েবসাইটে চেক</h1>
+            </div>
+          </div>
+        </a>
+        <div class="powered-by">
+          <span>Powered by</span>
+          <img
+            src="images/flexsoftrLogo.webp"
+            alt="FLEX SOFTR"
+            class="flexsoftr-logo"
+          />
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Manual Input -->
+        <div class="manual-input">
+          <div class="input-group">
+            <input
+              type="text"
+              id="phoneInput"
+              placeholder="যেমন: 01772065894"
+              class="phone-input"
+              maxlength="15"
+            />
+            <button id="checkButton" class="check-button">
+              <span class="button-text">চেক করুন</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-state hidden">
+          <div class="spinner"></div>
+          <p>লোড হচ্ছে...</p>
+          <p class="loading-text-en">Loading...</p>
+        </div>
+        <!-- Message -->
+
+        <!-- Result Section -->
+        <div id="resultSection" class="result-section hidden">
+          <div class="result-header-row">
+            <div class="phone-display">
+              <h3>ফলাফল</h3>
+              <span id="resultPhone" class="phone-number"></span>
+              <div class="result-message" id="resultMessage">
+                <!-- Message will be inserted here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats and Ratio Row -->
+          <div class="stats-ratio-row">
+            <!-- Success Ratio -->
+            <div class="success-ratio">
+              <div class="ratio-circle">
+                <div class="ratio-value" id="successRatio">0%</div>
+                <div class="ratio-label">সাকসেস রেশিও</div>
+                <div class="ratio-label-en">Success Ratio</div>
+              </div>
+              <div class="ratio-status" id="ratioStatus">খারাপ</div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+              <div class="stat-card orders">
+                <div class="stat-value" id="totalOrders">0</div>
+                <div class="stat-label">মোট অর্ডার</div>
+              </div>
+              <div class="stat-card deliveries">
+                <div class="stat-value" id="totalDeliveries">0</div>
+                <div class="stat-label">মোট ডেলিভারি</div>
+              </div>
+              <div class="stat-card cancellations">
+                <div class="stat-value" id="totalCancellations">0</div>
+                <div class="stat-label">মোট বাতিল</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="courier-breakdown">
+            <table>
+              <thead>
+                <tr>
+                  <th>লোগো</th>
+                  <th>অর্ডার</th>
+                  <th>ডেলিভারি</th>
+                  <th>বাতিল</th>
+                  <th>ডেলিভারির হার</th>
+                </tr>
+              </thead>
+              <tbody id="courierTableBody">
+                <!-- Dynamic courier data will be inserted here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" class="error-state hidden">
+          <div class="error-icon">⚠️</div>
+          <div class="error-message" id="errorMessage">
+            <!-- Error message will be inserted here -->
+          </div>
+          <button id="retryButton" class="retry-button">
+            <span>আবার চেষ্টা করুন</span>
+            <span class="button-text-en">Try Again</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-links">
+          <a href="https://flexsoftr.com" target="_blank" class="footer-link">
+            <span>ওয়েবসাইট</span>
+          </a>
+          <a
+            href="https://flexsoftr.com/contact-us"
+            target="_blank"
+            class="footer-link"
+          >
+            <span>যোগাযোগ</span>
+          </a>
+        </div>
+        <div class="version">v1.0.0</div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+    <script src="debug.js"></script>
+  </body>
+</html>

@@ -1,0 +1,310 @@
+/* Content Script CSS for Fake Order Checker Chrome Extension */
+
+/* Phone Number Highlighting */
+.fake-order-checker-highlight {
+  background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%) !important;
+  padding: 2px 4px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid #e2e8f0 !important;
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.fake-order-checker-highlight:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  background: linear-gradient(120deg, #7dd3fc 0%, #fbbf24 100%) !important;
+}
+
+.fake-order-checker-highlight::after {
+  content: "🔍" !important;
+  position: absolute !important;
+  top: -8px !important;
+  right: -8px !important;
+  background: #2563eb !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 16px !important;
+  height: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 8px !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.fake-order-checker-highlight:hover::after {
+  opacity: 1 !important;
+}
+
+/* Quick Check Button */
+#fake-order-checker-quick-btn {
+  position: fixed !important;
+  z-index: 999999 !important;
+  animation: fakeOrderCheckerSlideIn 0.3s ease !important;
+}
+
+.quick-check-button {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  color: white !important;
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  min-width: 200px !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.quick-check-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+}
+
+.quick-check-button:active {
+  transform: translateY(0) !important;
+}
+
+.quick-check-icon {
+  font-size: 18px !important;
+  flex-shrink: 0 !important;
+}
+
+.quick-check-text {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+.quick-check-text > div:first-child {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+.quick-check-phone {
+  font-size: 12px !important;
+  opacity: 0.9 !important;
+  font-weight: 400 !important;
+  margin-top: 2px !important;
+}
+
+/* Notifications */
+.fake-order-checker-notification {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  z-index: 999999 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  animation: fakeOrderCheckerSlideIn 0.3s ease !important;
+  max-width: 300px !important;
+  word-wrap: break-word !important;
+}
+
+.fake-order-checker-notification.info {
+  background: #10b981 !important;
+  color: white !important;
+}
+
+.fake-order-checker-notification.error {
+  background: #ef4444 !important;
+  color: white !important;
+}
+
+.fake-order-checker-notification.success {
+  background: #059669 !important;
+  color: white !important;
+}
+
+/* Animations */
+@keyframes fakeOrderCheckerSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fakeOrderCheckerSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fakeOrderCheckerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fakeOrderCheckerPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Loading Animation */
+.fake-order-checker-loading {
+  display: inline-block !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 50% !important;
+  border-top-color: white !important;
+  animation: fakeOrderCheckerSpin 1s ease-in-out infinite !important;
+}
+
+@keyframes fakeOrderCheckerSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quick-check-button {
+    min-width: 180px !important;
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+  }
+
+  .quick-check-icon {
+    font-size: 16px !important;
+  }
+
+  .quick-check-text > div:first-child {
+    font-size: 13px !important;
+  }
+
+  .quick-check-phone {
+    font-size: 11px !important;
+  }
+
+  .fake-order-checker-notification {
+    max-width: 250px !important;
+    font-size: 13px !important;
+    padding: 10px 16px !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .fake-order-checker-highlight {
+    background: linear-gradient(120deg, #1e40af 0%, #7c3aed 100%) !important;
+    border-color: #374151 !important;
+    color: white !important;
+  }
+
+  .fake-order-checker-highlight:hover {
+    background: linear-gradient(120deg, #3b82f6 0%, #8b5cf6 100%) !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .fake-order-checker-highlight {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+  }
+
+  .quick-check-button {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .fake-order-checker-highlight,
+  .quick-check-button,
+  .fake-order-checker-notification {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fake-order-checker-highlight:hover {
+    transform: none !important;
+  }
+
+  .quick-check-button:hover {
+    transform: none !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .fake-order-checker-highlight,
+  #fake-order-checker-quick-btn,
+  .fake-order-checker-notification {
+    display: none !important;
+  }
+}
+
+/* Accessibility Improvements */
+.fake-order-checker-highlight:focus {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+.quick-check-button:focus {
+  outline: 2px solid #ffffff !important;
+  outline-offset: 2px !important;
+}
+
+/* Screen Reader Support */
+.fake-order-checker-highlight::before {
+  content: "Click to check phone number: " !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* Performance Optimizations */
+.fake-order-checker-highlight {
+  will-change: transform !important;
+  backface-visibility: hidden !important;
+}
+
+.quick-check-button {
+  will-change: transform !important;
+  backface-visibility: hidden !important;
+}
